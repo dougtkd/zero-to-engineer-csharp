@@ -1,4 +1,14 @@
-﻿using System;
+﻿/*1. ler palavra
+2. validar
+3. remover espaços
+4. deixar minúsculo
+5. criar lista de vogais
+6. contador = 0
+7. percorrer cada letra
+8. se for letra e não for vogal → contador++
+9. imprimir resultado*/
+
+using System;
 using System.Collections.Generic;
 
 namespace ExercicioCsharp
@@ -12,15 +22,26 @@ namespace ExercicioCsharp
 
             if (string.IsNullOrEmpty(palavra))
             {
-                Console.WriteLine("palavra inválida!");
+                Console.WriteLine("Palavra inválida!");
                 return;
             }
 
-            string removerEspaco = palavra.Replace(" ", "");
-            string minusculo = removerEspaco.ToLower();
+            string removerEspacos = palavra.Replace(" ", "");
+            string deixarMinusculo = removerEspacos.ToLower();
 
-            Console.WriteLine($"A palavra é: {minusculo}");
+            string vogais = "aeiou";
+            int contador = 0;
 
+            foreach(char c in deixarMinusculo)
+            {
+                if (char.IsLetter(c) && !vogais.Contains(c))
+                {
+                    contador++;
+                }
+            }
+
+            Console.WriteLine($"Palavra: {deixarMinusculo}");
+            Console.WriteLine($"Número de consoantes: {contador}");
         }
     }
 }

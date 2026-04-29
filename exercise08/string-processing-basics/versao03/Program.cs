@@ -15,6 +15,22 @@ namespace ExercicioCsharp
 {
     public class Program
     {
+        static int ContarConsoantes(string texto)
+        {
+            string vogais = "aeiou";
+            int contador = 0;
+
+            foreach(char c in texto)
+            {
+                if (char.IsLetter(c) && !vogais.Contains(c))
+                {
+                    contador++;
+                }
+            }
+
+            return contador;
+        }
+
         static void Main()
         {
             Console.Write("Digite a palavra: ");
@@ -26,22 +42,12 @@ namespace ExercicioCsharp
                 return;
             }
 
-            string removerEspacos = palavra.Replace(" ", "");
-            string deixarMinusculo = removerEspacos.ToLower();
+            string resultado = palavra.Replace(" ", "").ToLower();
 
-            string vogais = "aeiou";
-            int contador = 0;
+            int total = ContarConsoantes(resultado);
 
-            foreach(char c in deixarMinusculo)
-            {
-                if (char.IsLetter(c) && !vogais.Contains(c))
-                {
-                    contador++;
-                }
-            }
-
-            Console.WriteLine($"Palavra: {deixarMinusculo}");
-            Console.WriteLine($"Número de consoantes: {contador}");
+            Console.WriteLine($"Palavra: {resultado}");
+            Console.WriteLine($"Consoantes: {total}");            
         }
     }
 }
